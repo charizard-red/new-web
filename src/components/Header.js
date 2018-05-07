@@ -19,6 +19,7 @@ class Header extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.logout = this.logout.bind(this);
     this.toggleLogin = this.toggleLogin.bind(this);
     this.toggleRegister = this.toggleRegister.bind(this);
     this.state = {
@@ -31,6 +32,11 @@ class Header extends Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
+  }
+
+  logout() {
+    window.localStorage.clear()
+    window.location.reload()
   }
 
   toggleLogin() {
@@ -61,10 +67,16 @@ class Header extends Component {
               <NavItem>
                 <NavLink tag={NavLinkRouter} to="/dashboard" activeClassName="active">Profile</NavLink>
               </NavItem>
-              <ButtonGroup>
-                <Button color="success" onClick={this.toggleLogin}>Log In</Button>
-                <Button color="warning" onClick={this.toggleRegister}>Register</Button>
-              </ButtonGroup>
+              {
+                (window.localStorage.token) ? (
+                  <Button color="danger" onClick={this.logout}>Log Out</Button>
+                ) : (
+                  <ButtonGroup>
+                    <Button color="success" onClick={this.toggleLogin}>Log In</Button>
+                    <Button color="warning" onClick={this.toggleRegister}>Register</Button>
+                  </ButtonGroup>
+                )
+              }
             </Nav>
           </Collapse>
         </Navbar>

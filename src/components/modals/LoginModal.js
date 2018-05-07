@@ -32,10 +32,12 @@ class LoginModal extends Component {
       email: this.state.email,
       password: this.state.password
     }).then(data => {
-      if(data.data.text=='error'){
+      if(data.data.text==='error'){
         alert('Email and password not match')
       } else {
         console.log(data);
+        window.localStorage.setItem('token', data.data.token)
+        window.location.reload()
         toggle()
       }
     }).catch(err => console.log(err))
