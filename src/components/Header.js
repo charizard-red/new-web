@@ -59,9 +59,6 @@ class Header extends Component {
                 <NavLink tag={NavLinkRouter} exact to="/" activeClassName="active">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={NavLinkRouter} to="/news" activeClassName="active">News</NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink tag={NavLinkRouter} to="/dashboard" activeClassName="active">Profile</NavLink>
               </NavItem>
               <ButtonGroup>
