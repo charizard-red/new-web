@@ -37,6 +37,7 @@ class LoginModal extends Component {
       } else {
         console.log(data);
         window.localStorage.setItem('token', data.data.token)
+        window.localStorage.setItem('data', JSON.stringify(data.data.data))
         window.location.reload()
         toggle()
       }
