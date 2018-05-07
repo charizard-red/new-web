@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Form,
   FormGroup,
@@ -13,12 +14,26 @@ import {
 class LoginModal extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      email: "",
+      password: ""
+    }
     this.handleChange = this.handleChange.bind(this)
+    this.login = this.login.bind(this)
   }
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+  login() {
+    axios.post(process.env.REACT_APP_URL + '/auth/login', {
+      email: this.state.email,
+      password: this.state.password
+    }).then(data => {
+      console.log(this.state);
+      console.log(data);
+    }).catch(err => console.log(err))
   }
   render() {
     return (
@@ -29,18 +44,18 @@ class LoginModal extends Component {
             <Form>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" onChange={this.handleChange} placeholder="Your Email" />
+                <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChange} placeholder="Your Email" />
               </FormGroup>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                 <Label for="examplePassword" className="mr-sm-2">Password</Label>
-                <Input type="password" name="password" id="examplePassword" onChange={this.handleChange} placeholder="Your Password" />
+                <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChange} placeholder="Your Password" />
               </FormGroup>
             </Form><br/>
             <Button color="danger" onClick={this.props.toggle} block>Sign In with Google</Button>
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.props.toggle}>Cancel</Button>{' '}
-            <Button color="success" onClick={this.props.toggle}>Log In</Button>
+            <Button color="success" onClick={this.login}>Log In</Button>
           </ModalFooter>
         </Modal>
       </div>
