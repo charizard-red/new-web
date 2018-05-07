@@ -17,12 +17,12 @@ class EdituserModal extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.update = this.update.bind(this)
     this.state = {
-      name: "",
-      email: "",
-      phone: "",
-      gender: "male",
-      birth: '',
-      address: ""
+      name: this.props.user_data.username,
+      email: this.props.user_data.email,
+      phone: this.props.user_data.data.phone,
+      gender: this.props.user_data.data.gender,
+      birth: this.props.user_data.data.birth,
+      address: this.props.user_data.data.address
     }
   }
   handleChange(e) {
@@ -47,6 +47,8 @@ class EdituserModal extends Component {
       }
     }).then(data => {
       console.log(data)
+      window.localStorage.token = data.data.token
+      window.location.reload()
     }).catch(err => console.log(err))
   }
   render() {

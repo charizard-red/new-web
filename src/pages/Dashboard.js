@@ -96,31 +96,25 @@ class Dashboard extends Component {
       <Container>
         <Provider>
           {
-            (window.localStorage.token) ? (
+            (window.localStorage.token && this.state.user_data) ? (
               <div>
                 <Row>
                   <Col xs="3">
-                    {
-                      (this.state.user_data) ? (
-                        <UserCard data={{
-                          name: this.state.user_data.username,
-                          email: this.state.user_data.email,
-                          phone: this.state.user_data.data.phone,
-                          gender: this.state.user_data.data.gender,
-                          address: this.state.user_data.data.address,
-                          birth: this.state.user_data.data.birth,
-                        }}
-                        toggle={this.toggle}
-                        toggleEdit={this.toggleEdit}
-                      />
-                      ) : (
-                        <div></div>
-                      )
-                    }
+                    <UserCard data={{
+                      name: this.state.user_data.username,
+                      email: this.state.user_data.email,
+                      phone: this.state.user_data.data.phone,
+                      gender: this.state.user_data.data.gender,
+                      address: this.state.user_data.data.address,
+                      birth: this.state.user_data.data.birth,
+                    }}
+                    toggle={this.toggle}
+                    toggleEdit={this.toggleEdit}
+                  />
                   </Col>
                   <Col xs="9">
                     <Jumbotron fluid style={{padding: 15}}>
-                      <h1>Welcome, User Name!</h1>
+                      <h1>Welcome, {this.state.user_data.username}!</h1>
                       <hr />
                       <h3>Find Clinic</h3>
                       <Form inline>
@@ -163,15 +157,17 @@ class Dashboard extends Component {
                 </Col>
               </Row>
 
-                <CreateClinicModal
-                  toggle={this.toggle}
-                  modal={this.state.modal}
-                />
+              <CreateClinicModal
+                toggle={this.toggle}
+                modal={this.state.modal}
+              />
 
-                <EdituserModal
-                  toggle={this.toggleEdit}
-                  modal={this.state.modalEdit}
-                />
+              <EdituserModal
+                toggle={this.toggleEdit}
+                user_data={this.state.user_data}
+                modal={this.state.modalEdit}
+              />
+
               </div>
             ) : (
               <h1>You are not logged in</h1>
