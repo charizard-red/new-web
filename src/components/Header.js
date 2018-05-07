@@ -38,7 +38,7 @@ class Header extends Component {
   logout() {
     window.localStorage.clear();
     // window.location.reload();
-    this.props.history.push("/dashboard");
+    this.props.history.push("/");
   }
 
   toggleLogin() {
