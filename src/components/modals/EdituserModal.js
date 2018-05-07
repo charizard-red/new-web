@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import {
   Form,
@@ -139,4 +140,4 @@ class EdituserModal extends Component {
   }
 }
 
-export default EdituserModal;
+export default withRouter(EdituserModal);

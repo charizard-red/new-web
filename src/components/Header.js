@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink as NavLinkRouter } from "react-router-dom";
+import { NavLink as NavLinkRouter, withRouter } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -114,4 +114,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
