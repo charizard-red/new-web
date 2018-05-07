@@ -12,8 +12,12 @@ class Hero extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+    this.toggle2 = this.toggle2.bind(this);
+    this.toggle3 = this.toggle3.bind(this);
     this.state = {
-      collapse: false
+      collapse: false,
+      collapse2: false,
+      collapse3: false,
     };
   }
 
@@ -22,24 +26,40 @@ class Hero extends React.Component {
       collapse: !this.state.collapse
     });
   }
+
+  toggle2() {
+    this.setState({
+      collapse2: !this.state.collapse2
+    });
+  }
+
+  toggle3() {
+    this.setState({
+      collapse3: !this.state.collapse3
+    });
+  }
+
   render() {
     return (<div>
       <Jumbotron>
-        <h1 className="display-3">Welcome to Our Web</h1>
         {/* <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p> */}
-        <hr className="my-2"/>
-        <h2>Stay calm and make an appointment</h2>
-        <p>Temu Dokter app makes it easy to request an appointment with a doctor specialties and general doctor.</p>
-        {/*<p className="lead">
+        <div className="d-flex">
+          <img className="mr-3" src={require('../assets/clinic2.jpg')}/>
+          <div>
+            <h1 className="display-3">Welcome to Our Web</h1>
+            <hr className="my-2"/><br/>
+            <h2>Stay calm and make an appointment</h2>
+            <p>Temu Dokter app makes it easy to request an appointment with a doctor specialties and general doctor.</p>
+          </div>
+        </div>
+        {/* <p className="lead">
           <Button color="primary">Learn More</Button>
-        </p>*/
-        }
+        </p> */}
       </Jumbotron>
       <Media>
         <Media left="left" href="#" style={{
             marginRight: 20
           }}>
-          <img src={require('../assets/clinic2.jpg')}/>
         </Media>
         <Media body="body">
           <div>
@@ -77,14 +97,14 @@ class Hero extends React.Component {
 
       <div>
         <span>
-          <h2 onClick={this.toggle}>
-            <Button color="primary" onClick={this.toggle} style={{
+          <h2 onClick={this.toggle2}>
+            <Button color="primary" onClick={this.toggle2} style={{
                 marginRight: 10
               }}>+</Button>
             Generasi Milenial Sadar Gaya Hidup Sehat karena Media Sosial
           </h2>
         </span>
-        <Collapse isOpen={this.state.collapse}>
+        <Collapse isOpen={this.state.collapse2}>
           <Card>
             <CardBody style={{
                 textAlign: 'justify'
@@ -100,14 +120,14 @@ class Hero extends React.Component {
 
       <div>
         <span>
-          <h2 onClick={this.toggle}>
-            <Button color="primary" onClick={this.toggle} style={{
+          <h2 onClick={this.toggle3}>
+            <Button color="primary" onClick={this.toggle3} style={{
                 marginRight: 10
               }}>+</Button>
             Belajar Cara Jalan untuk Perbaiki Masalah Tulang
           </h2>
         </span>
-        <Collapse isOpen={this.state.collapse}>
+        <Collapse isOpen={this.state.collapse3}>
           <Card>
             <CardBody style={{
                 textAlign: 'justify'
