@@ -15,7 +15,7 @@ const Hero = (props) => {
       </Jumbotron>
       <Media>
       <Media left href="#" style={{ marginRight: 20}}>
-        <img src={require('../assets/clinic.jpg')} />
+        <img src={require('../assets/doctor_icon.png')} />
       </Media>
       <Media body>
         <Media heading>
