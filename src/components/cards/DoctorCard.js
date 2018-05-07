@@ -12,6 +12,7 @@ const ClinicCard = (props) => {
           <CardText>
             <b>specialist</b>: {props.data.specialist}<br/>
             <b>phone</b>: {props.data.phone}<br/>
+            <b>price</b>: {props.data.price}<br/>
             <b>address</b>: {props.data.address}
           </CardText>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>

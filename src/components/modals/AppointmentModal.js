@@ -26,7 +26,6 @@ class AppointmentModal extends Component {
         <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
           <ModalHeader toggle={this.props.toggle}>Make Appointment</ModalHeader>
           <ModalBody>
-            <p>Rp 50,000</p>
             <Form>
               <FormGroup>
                 <Label for="date">Date</Label>

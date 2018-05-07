@@ -28,36 +28,42 @@ class Dashboard extends Component {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
           {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
           {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
           {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
           {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
           {
             specialist: 'gigi',
             name: 'Dr. Ali Kurniawan',
             phone: '085811348633',
+            price: 'Rp 250,000',
             address: 'GDC Alamanda A3/3'
           },
         ]
@@ -101,6 +107,7 @@ class Dashboard extends Component {
                           specialist: data.specialist,
                           name: data.name,
                           phone: data.phone,
+                          price: data.price,
                           address: data.address
                         }}
                         toggle={this.toggle}
