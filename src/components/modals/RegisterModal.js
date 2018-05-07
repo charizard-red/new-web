@@ -42,8 +42,12 @@ class RegisterModal extends Component {
         phone: this.state.phone,
         birth: this.state.birth
     }).then(data => {
-      console.log(data);
-      toggle()
+      if(data.data.text==='error'){
+        alert('User data is already exist')
+      } else {
+        console.log(data);
+        toggle()
+      }
     }).catch(err => console.log(err))
   }
   render() {

@@ -27,12 +27,17 @@ class LoginModal extends Component {
     })
   }
   login() {
+    let toggle = this.props.toggle
     axios.post(process.env.REACT_APP_URL + '/auth/login', {
       email: this.state.email,
       password: this.state.password
     }).then(data => {
-      console.log(this.state);
-      console.log(data);
+      if(data.data.text=='error'){
+        alert('Email and password not match')
+      } else {
+        console.log(data);
+        toggle()
+      }
     }).catch(err => console.log(err))
   }
   render() {
