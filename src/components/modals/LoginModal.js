@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 import {
   Form,
   FormGroup,
@@ -9,39 +10,44 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter } from 'reactstrap';
+  ModalFooter
+} from "reactstrap";
 
 class LoginModal extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: "",
       password: ""
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.login = this.login.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.login = this.login.bind(this);
   }
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
   }
   login() {
-    let toggle = this.props.toggle
-    axios.post(process.env.REACT_APP_URL + '/auth/login', {
-      email: this.state.email,
-      password: this.state.password
-    }).then(data => {
-      if(data.data.text==='error'){
-        alert('Email and password not match')
-      } else {
-        console.log(data);
-        window.localStorage.setItem('token', data.data.token)
-        window.localStorage.setItem('data', JSON.stringify(data.data.data))
-        window.location.reload()
-        toggle()
-      }
-    }).catch(err => console.log(err))
+    let toggle = this.props.toggle;
+    axios
+      .post(process.env.REACT_APP_URL + "/auth/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(data => {
+        if (data.data.text === "error") {
+          alert("Email and password not match");
+        } else {
+          console.log(data);
+          window.localStorage.setItem("token", data.data.token);
+          window.localStorage.setItem("data", JSON.stringify(data.data.data));
+          // window.location.reload();
+          this.props.history.push("/dashboard");
+          toggle();
+        }
+      })
+      .catch(err => console.log(err));
   }
   render() {
     return (
@@ -51,19 +57,44 @@ class LoginModal extends Component {
           <ModalBody>
             <Form>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" value={this.state.email} onChange={this.handleChange} placeholder="Your Email" />
+                <Label for="exampleEmail" className="mr-sm-2">
+                  Email
+                </Label>
+                <Input
+                  type="email"
+                  name="email"
+                  id="exampleEmail"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  placeholder="Your Email"
+                />
               </FormGroup>
               <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                <Label for="examplePassword" className="mr-sm-2">Password</Label>
-                <Input type="password" name="password" id="examplePassword" value={this.state.password} onChange={this.handleChange} placeholder="Your Password" />
+                <Label for="examplePassword" className="mr-sm-2">
+                  Password
+                </Label>
+                <Input
+                  type="password"
+                  name="password"
+                  id="examplePassword"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  placeholder="Your Password"
+                />
               </FormGroup>
-            </Form><br/>
-            <Button color="danger" onClick={this.props.toggle} block>Sign In with Google</Button>
+            </Form>
+            <br />
+            <Button color="danger" onClick={this.props.toggle} block>
+              Sign In with Google
+            </Button>
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.props.toggle}>Cancel</Button>{' '}
-            <Button color="success" onClick={this.login}>Log In</Button>
+            <Button color="danger" onClick={this.props.toggle}>
+              Cancel
+            </Button>{" "}
+            <Button color="success" onClick={this.login}>
+              Log In
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
@@ -71,4 +102,4 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal;
+export default withRouter(LoginModal);

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 import {
   Form,
   FormGroup,
@@ -9,13 +9,14 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter } from 'reactstrap';
+  ModalFooter
+} from "reactstrap";
 
 class EdituserModal extends Component {
-  constructor(props){
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.update = this.update.bind(this)
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.update = this.update.bind(this);
     this.state = {
       name: this.props.user_data.username,
       email: this.props.user_data.email,
@@ -23,19 +24,19 @@ class EdituserModal extends Component {
       gender: this.props.user_data.data.gender,
       birth: this.props.user_data.data.birth,
       address: this.props.user_data.data.address
-    }
+    };
   }
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
   }
   update() {
     axios({
-      url: process.env.REACT_APP_URL+'/auth/login/complete',
-      method: 'POST',
+      url: process.env.REACT_APP_URL + "/auth/login/complete",
+      method: "POST",
       headers: {
-        "Authorization": "Bearer " + window.localStorage.token
+        Authorization: "Bearer " + window.localStorage.token
       },
       data: {
         username: this.state.name,
@@ -45,11 +46,14 @@ class EdituserModal extends Component {
         birth: this.state.birth,
         address: this.state.address
       }
-    }).then(data => {
-      console.log(data)
-      window.localStorage.token = data.data.token
-      window.location.reload()
-    }).catch(err => console.log(err))
+    })
+      .then(data => {
+        console.log(data);
+        window.localStorage.token = data.data.token;
+        // window.location.reload();
+        this.props.history.push("/dashboard");
+      })
+      .catch(err => console.log(err));
   }
   render() {
     return (
@@ -65,7 +69,8 @@ class EdituserModal extends Component {
                   name="name"
                   value={this.state.name}
                   onChange={this.handleChange}
-                  placeholder="Your name" />
+                  placeholder="Your name"
+                />
               </FormGroup>
               <FormGroup>
                 <Label>Email</Label>
@@ -74,7 +79,8 @@ class EdituserModal extends Component {
                   name="email"
                   value={this.state.email}
                   onChange={this.handleChange}
-                  placeholder="Your E-Mail" />
+                  placeholder="Your E-Mail"
+                />
               </FormGroup>
               <FormGroup>
                 <Label>Phone</Label>
@@ -83,7 +89,8 @@ class EdituserModal extends Component {
                   name="phone"
                   value={this.state.phone}
                   onChange={this.handleChange}
-                  placeholder="Your Phone" />
+                  placeholder="Your Phone"
+                />
               </FormGroup>
               <FormGroup>
                 <Label>Gender</Label>
@@ -91,7 +98,8 @@ class EdituserModal extends Component {
                   type="select"
                   name="gender"
                   value={this.state.gender}
-                  onChange={this.handleChange}>
+                  onChange={this.handleChange}
+                >
                   <option value="male">MALE</option>
                   <option value="female">FEMALE</option>
                 </Input>
@@ -102,7 +110,8 @@ class EdituserModal extends Component {
                   type="date"
                   name="birth"
                   value={this.state.birth}
-                  onChange={this.handleChange}/>
+                  onChange={this.handleChange}
+                />
               </FormGroup>
               <FormGroup>
                 <Label>Address</Label>
@@ -111,13 +120,18 @@ class EdituserModal extends Component {
                   placeholder="Your address"
                   name="address"
                   value={this.state.address}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}
+                />
               </FormGroup>
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.props.toggle}>Cancel</Button>{' '}
-            <Button color="success" onClick={this.update}>Update</Button>
+            <Button color="danger" onClick={this.props.toggle}>
+              Cancel
+            </Button>{" "}
+            <Button color="success" onClick={this.update}>
+              Update
+            </Button>
           </ModalFooter>
         </Modal>
       </div>
