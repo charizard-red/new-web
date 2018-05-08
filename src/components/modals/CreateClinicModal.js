@@ -118,7 +118,7 @@ class EdituserModal extends Component {
             <ReactFilestack
               apikey="Au1xZ8DZ6TuCW4NtwiEbQz"
               buttonText="Next"
-              option={{ maxFiles: 1 }}
+              option={{ maxFiles: 1, accept: 'image/*' }}
               buttonClass="btn btn-success"
               onSuccess={this.uploadSuccess} />
           </ModalFooter>

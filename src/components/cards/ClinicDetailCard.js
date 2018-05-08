@@ -26,7 +26,7 @@ const ClinicCard = (props) => {
               <Button color="primary" onClick={props.toggle}>Add Doctor</Button>
             </div>
           ) : (
-            <Button color="success">Star</Button>
+            <div></div>
           )}
         </CardBody>
       </Card>

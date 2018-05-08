@@ -28,12 +28,16 @@ class AppointmentModal extends Component {
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label>Nama</Label>
-                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                <Label>Name</Label>
+                <Input type="text" placeholder="Name" />
               </FormGroup>
               <FormGroup>
-                <Label>Specialty</Label>
-                <Input placeholder="with a placeholder" />
+                <Label>Specialist</Label>
+                <Input type="text" placeholder="Specialist" />
+              </FormGroup>
+              <FormGroup>
+                <Label>Cost</Label>
+                <Input type="text" placeholder="Cost" />
               </FormGroup>
               <FormGroup>
                 <Label>Practical time</Label>
@@ -46,37 +50,37 @@ class AppointmentModal extends Component {
               <FormGroup check>
                 <Label>Days</Label><br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="sun"/>{' '}
                   Sunday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="mon"/>{' '}
                   Monday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="tue"/>{' '}
                   Tuesday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="wed"/>{' '}
                   Wednesday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="thu"/>{' '}
                   Thursday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="fri"/>{' '}
                   Friday
                 </Label>
                 <br />
                 <Label check>
-                  <Input type="checkbox" />{' '}
+                  <Input onChange={this.handleChange} type="checkbox" name="sat"/>{' '}
                   Saturday
                 </Label>
               </FormGroup>
