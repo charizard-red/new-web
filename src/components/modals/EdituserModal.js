@@ -33,6 +33,7 @@ class EdituserModal extends Component {
     });
   }
   update() {
+    let toggle = this.props.toggle
     axios({
       url: process.env.REACT_APP_URL + "/auth/login/complete",
       method: "POST",
@@ -52,6 +53,7 @@ class EdituserModal extends Component {
         console.log(data);
         window.localStorage.token = data.data.token;
         // window.location.reload();
+        toggle()
         this.props.history.push("/dashboard");
       })
       .catch(err => console.log(err));

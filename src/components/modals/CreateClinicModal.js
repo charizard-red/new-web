@@ -38,6 +38,7 @@ class EdituserModal extends Component {
   }
   uploadSuccess(data) {
     console.log(data.filesUploaded[0])
+    let toggle = this.props.toggle
     axios.post(process.env.REACT_APP_URL+'/clinics', {
       photo: data.filesUploaded[0].url,
       title: this.state.title,
@@ -51,6 +52,7 @@ class EdituserModal extends Component {
       }
     }).then(data => {
       console.log(data);
+      toggle()
     }).catch(err => console.log(err))
   }
   render(){
