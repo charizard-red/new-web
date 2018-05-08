@@ -61,7 +61,7 @@ class Dashboard extends Component {
       <Container>
         <Row>
           <Col xs="3">
-            <ClinicDetailCard data={this.state.klinik_data}/>
+            <ClinicDetailCard data={this.state.klinik_data} owner={this.state.owner}/>
           </Col>
           <Col xs="9">
             <Jumbotron fluid style={{padding: 15}}>

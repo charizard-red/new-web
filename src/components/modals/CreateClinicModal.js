@@ -96,11 +96,11 @@ class EdituserModal extends Component {
                   <option value="bogor">BOGOR</option>
                   <option value="bekasi">BEKASI</option>
                   <option value="tanggerang">TANGERANG</option>
-                  <option value="pusat">JAKARTA PUSAT</option>
-                  <option value="selatan">JAKARTA SELATAN</option>
-                  <option value="utara">JAKARTA UTARA</option>
-                  <option value="timur">JAKARTA TIMUR</option>
-                  <option value="barat">JAKARTA BARAT</option>
+                  <option value="jakarta pusat">JAKARTA PUSAT</option>
+                  <option value="jakarta selatan">JAKARTA SELATAN</option>
+                  <option value="jakarta utara">JAKARTA UTARA</option>
+                  <option value="jakarta timur">JAKARTA TIMUR</option>
+                  <option value="jakarta barat">JAKARTA BARAT</option>
                 </Input>
               </FormGroup>
               <FormGroup>

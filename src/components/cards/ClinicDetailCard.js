@@ -17,10 +17,17 @@ const ClinicCard = (props) => {
           <CardText>
             <b>phone</b>: {props.data.phone}<br/>
             <b>address</b>: {props.data.address}<br/>
+            <b>city</b>: {props.data.city}<br/>
+            <b>doctors</b>: {props.data.doctors.length}
           </CardText>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          {(props.owner) ? (
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <Button color="success">Edit</Button>
+              <Button color="primary">Add Doctor</Button>
+            </div>
+          ) : (
             <Button color="success">Star</Button>
-          </div>
+          )}
         </CardBody>
       </Card>
     </div>
