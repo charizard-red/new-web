@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { NavLink as NavLinkRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink as NavLinkRouter, withRouter } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -9,10 +9,11 @@ import {
   NavItem,
   NavLink,
   Button,
-  ButtonGroup } from 'reactstrap';
+  ButtonGroup
+} from "reactstrap";
 
-import LoginModal from '../components/modals/LoginModal'
-import RegisterModal from '../components/modals/RegisterModal'
+import LoginModal from "../components/modals/LoginModal";
+import RegisterModal from "../components/modals/RegisterModal";
 
 class Header extends Component {
   constructor(props) {
@@ -35,8 +36,9 @@ class Header extends Component {
   }
 
   logout() {
-    window.localStorage.clear()
-    window.location.reload()
+    window.localStorage.clear();
+    // window.location.reload();
+    this.props.history.push("/");
   }
 
   toggleLogin() {
@@ -56,37 +58,60 @@ class Header extends Component {
       <div>
         <Navbar color="primary" dark expand="md">
           <NavbarBrand href="/">
-            <img style={{height: 40}} src={require('../assets/temudokter-logo.png')} alt="Temu Dokter"/>
+            <img
+              style={{ height: 40 }}
+              src={require("../assets/temudokter-logo.png")}
+              alt="Temu Dokter"
+            />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={NavLinkRouter} exact to="/" activeClassName="active">Home</NavLink>
+                <NavLink
+                  tag={NavLinkRouter}
+                  exact
+                  to="/"
+                  activeClassName="active"
+                >
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={NavLinkRouter} to="/dashboard" activeClassName="active">Profile</NavLink>
+                <NavLink
+                  tag={NavLinkRouter}
+                  to="/dashboard"
+                  activeClassName="active"
+                >
+                  Profile
+                </NavLink>
               </NavItem>
-              {
-                (window.localStorage.token) ? (
-                  <Button color="danger" onClick={this.logout}>Log Out</Button>
-                ) : (
-                  <ButtonGroup>
-                    <Button color="success" onClick={this.toggleLogin}>Log In</Button>
-                    <Button color="warning" onClick={this.toggleRegister}>Register</Button>
-                  </ButtonGroup>
-                )
-              }
+              {window.localStorage.token ? (
+                <Button color="danger" onClick={this.logout}>
+                  Log Out
+                </Button>
+              ) : (
+                <ButtonGroup>
+                  <Button color="success" onClick={this.toggleLogin}>
+                    Log In
+                  </Button>
+                  <Button color="warning" onClick={this.toggleRegister}>
+                    Register
+                  </Button>
+                </ButtonGroup>
+              )}
             </Nav>
           </Collapse>
         </Navbar>
 
-        <LoginModal toggle={this.toggleLogin} modal={this.state.loginForm}/>
-        <RegisterModal toggle={this.toggleRegister} modal={this.state.registerForm} />
-
+        <LoginModal toggle={this.toggleLogin} modal={this.state.loginForm} />
+        <RegisterModal
+          toggle={this.toggleRegister}
+          modal={this.state.registerForm}
+        />
       </div>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);
