@@ -113,7 +113,8 @@ class Dashboard extends Component {
                               <Col>
                                 <ClinicCard data={{
                                   index: index,
-                                  name: data.name,
+                                  title: data.title,
+                                  photo: data.photo,
                                   phone: data.phone,
                                   city: data.city,
                                   address: data.address
