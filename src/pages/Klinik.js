@@ -36,7 +36,7 @@ class Dashboard extends Component {
     axios.get(process.env.REACT_APP_URL+'/clinics/'+this.props.match.params.id)
     .then(data => {
       console.log(data.data.data);
-      if(window.localStorage.user_id == data.data.data.user_id){
+      if(window.localStorage.user_id === data.data.data.user_id){
         this.setState({
           klinik_data: data.data.data,
           owner: true
