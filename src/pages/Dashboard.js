@@ -111,14 +111,7 @@ class Dashboard extends Component {
                           this.state.clinic_data.map((data, index) => {
                             return (
                               <Col>
-                                <ClinicCard data={{
-                                  index: index,
-                                  title: data.title,
-                                  photo: data.photo,
-                                  phone: data.phone,
-                                  city: data.city,
-                                  address: data.address
-                              }}/>
+                                <ClinicCard data={data}/>
                             </Col>
                           )
                         })

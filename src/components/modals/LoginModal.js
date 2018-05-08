@@ -41,7 +41,7 @@ class LoginModal extends Component {
         } else {
           console.log(data);
           window.localStorage.setItem("token", data.data.token);
-          window.localStorage.setItem("data", JSON.stringify(data.data.data));
+          window.localStorage.setItem("user_id",  data.data.data._id);
           // window.location.reload();
           this.props.history.push("/dashboard");
           toggle();

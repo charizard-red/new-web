@@ -16,7 +16,7 @@ const ClinicCard = (props) => {
             <b>address</b>: {props.data.address}<br/>
           </CardText>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Button color="success" tag={Link} to={"/klinik/"+props.data.index}>View</Button>
+            <Button color="success" tag={Link} to={"/klinik/"+props.data._id}>View</Button>
           </div>
         </CardBody>
       </Card>

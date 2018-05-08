@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import {
   Container,
   Row,
@@ -18,59 +19,35 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       modal: false,
-      klinik_id: this.props.match.params.id,
+      klinik_id: this.props.match.params._id,
+      owner: false,
       klinik_data: {
         name: 'Klinik Sehat',
         phone: '085811348633',
         address: 'GDC Alamanda A3/3',
-        doctors: [
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-          {
-            specialist: 'gigi',
-            name: 'Dr. Ali Kurniawan',
-            phone: '085811348633',
-            price: 'Rp 250,000',
-            address: 'GDC Alamanda A3/3'
-          },
-        ]
+        doctors: []
       },
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentWillMount() {
+    axios.get(process.env.REACT_APP_URL+'/clinics/'+this.props.match.params.id)
+    .then(data => {
+      console.log(data.data.data);
+      if(window.localStorage.user_id == data.data.data.user_id){
+        this.setState({
+          klinik_data: data.data.data,
+          owner: true
+        })
+      } else {
+        this.setState({
+          klinik_data: data.data.data,
+          owner: false
+        })
+      }
+    }).catch(err => console.log(err))
   }
 
   toggle() {
@@ -88,7 +65,7 @@ class Dashboard extends Component {
           </Col>
           <Col xs="9">
             <Jumbotron fluid style={{padding: 15}}>
-              <h1>{this.state.klinik_data.name}</h1>
+              <h1>{this.state.klinik_data.title}</h1>
               <p>{this.state.klinik_data.address}</p>
               <hr />
               <h3>Find Doctor</h3>

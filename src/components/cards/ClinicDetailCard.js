@@ -11,9 +11,9 @@ const ClinicCard = (props) => {
   return (
     <div>
       <Card style={{ width: '250px', marginTop: 10 }}>
-        <CardImg top width="50%" src={require('../../assets/klinik_icon.png')} alt="Card image cap" />
+        <CardImg top width="50%" src={props.data.photo} alt="Card image cap" />
         <CardBody>
-          <CardTitle>{props.data.name}</CardTitle>
+          <CardTitle>{props.data.title}</CardTitle>
           <CardText>
             <b>phone</b>: {props.data.phone}<br/>
             <b>address</b>: {props.data.address}<br/>
