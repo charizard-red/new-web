@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios'
+import ReactFilestack from 'filestack-react'
 import {
   Form,
   FormGroup,
@@ -14,11 +16,42 @@ class EdituserModal extends Component {
   constructor(props){
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+    this.uploadSuccess = this.uploadSuccess.bind(this)
+    this.state = {
+      title: "",
+      phone: "",
+      address: "",
+      city: "depok",
+      postal_code: ""
+    }
   }
   handleChange(e){
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+  handleFileChange(e){
+    this.setState({
+      [e.target.name]: e.target.files[0]
+    })
+  }
+  uploadSuccess(data) {
+    console.log(data.filesUploaded[0])
+    axios.post(process.env.REACT_APP_URL+'/clinics', {
+      photo: data.filesUploaded[0].url,
+      title: this.state.title,
+      phone: this.state.phone,
+      address: this.state.address,
+      city: this.state.city,
+      postal_code: this.state.postal_code,
+    }, {
+      headers: {
+        "Authorization": "Bearer " + window.localStorage.token
+      }
+    }).then(data => {
+      console.log(data);
+    }).catch(err => console.log(err))
   }
   render(){
     return (
@@ -28,40 +61,35 @@ class EdituserModal extends Component {
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label for="exampleEmail">Name</Label>
+                <Label for="exampleEmail">Title</Label>
                 <Input
                   type="text"
-                  name="name"
+                  name="title"
+                  value={this.state.title}
                   onChange={this.handleChange}
                   placeholder="Insert name of your clinic" />
               </FormGroup>
               <FormGroup>
                 <Label for="exampleEmail">Phone</Label>
                 <Input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="phone"
+                  value={this.state.phone}
                   onChange={this.handleChange}
-                  placeholder="Insert name of your clinic" />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleText">Description</Label>
-                <Input
-                  type="textarea"
-                  name="description"
-                  onChange={this.handleChange}
-                  id="exampleText" />
+                  placeholder="Phone" />
               </FormGroup>
               <FormGroup>
                 <Label for="exampleText">Address</Label>
                 <Input
                   type="textarea"
                   name="address"
+                  value={this.state.address}
                   onChange={this.handleChange}
                   id="exampleText" />
               </FormGroup>
               <FormGroup>
                 <Label for="select">City</Label>
-                <Input type="select" name="city" onChange={this.handleChange} id="select">
+                <Input type="select" name="city" value={this.state.city} onChange={this.handleChange} id="select">
                   <option value="depok">DEPOK</option>
                   <option value="bogor">BOGOR</option>
                   <option value="bekasi">BEKASI</option>
@@ -81,19 +109,16 @@ class EdituserModal extends Component {
                   onChange={this.handleChange}
                   placeholder="Insert your postal code" />
               </FormGroup>
-              <FormGroup>
-                <Label for="exampleFile">Photo</Label>
-                <Input
-                  type="file"
-                  name="photo"
-                  onChange={this.handleChange}
-                  id="exampleFile" />
-              </FormGroup>
             </Form>
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.props.toggle}>Cancel</Button>{' '}
-            <Button color="success" onClick={this.props.toggle}>Create</Button>
+            <ReactFilestack
+              apikey="Au1xZ8DZ6TuCW4NtwiEbQz"
+              buttonText="Next"
+              option={{ maxFiles: 1 }}
+              buttonClass="btn btn-success"
+              onSuccess={this.uploadSuccess} />
           </ModalFooter>
         </Modal>
       </div>
