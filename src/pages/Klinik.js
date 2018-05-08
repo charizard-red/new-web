@@ -13,12 +13,14 @@ import {
 import DoctorCard from '../components/cards/DoctorCard';
 import ClinicDetailCard from '../components/cards/ClinicDetailCard';
 import AppointmentModal from '../components/modals/AppointmentModal';
+import AddDoctorModal from '../components/modals/AddDoctorModal';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
+      doctorModal: false,
       klinik_id: this.props.match.params._id,
       owner: false,
       klinik_data: {
@@ -30,6 +32,7 @@ class Dashboard extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.toggleDoctor = this.toggleDoctor.bind(this);
   }
 
   componentWillMount() {
@@ -56,12 +59,18 @@ class Dashboard extends Component {
     });
   }
 
+  toggleDoctor() {
+    this.setState({
+      doctorModal: !this.state.doctorModal
+    });
+  }
+
   render() {
     return (
       <Container>
         <Row>
           <Col xs="3">
-            <ClinicDetailCard data={this.state.klinik_data} owner={this.state.owner}/>
+            <ClinicDetailCard toggle={this.toggleDoctor} data={this.state.klinik_data} owner={this.state.owner}/>
           </Col>
           <Col xs="9">
             <Jumbotron fluid style={{padding: 15}}>
@@ -97,7 +106,7 @@ class Dashboard extends Component {
             </Jumbotron>
           </Col>
         </Row>
-
+        <AddDoctorModal toggle={this.toggleDoctor} modal={this.state.doctorModal}/>
         <AppointmentModal
           toggle={this.toggle}
           modal={this.state.modal}
