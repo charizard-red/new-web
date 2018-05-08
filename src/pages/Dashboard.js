@@ -22,44 +22,7 @@ class Dashboard extends Component {
     this.state = {
       modal: false,
       modalEdit: false,
-      clinic_data: [
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        },
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        },
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        },
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        },
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        },
-        {
-          name: 'Klinik Sehat',
-          phone: '085811348633',
-          city: 'depok',
-          address: 'GDC Alamanda A3/3'
-        }
-      ]
+      clinic_data: []
     };
 
     this.toggle = this.toggle.bind(this);
@@ -89,6 +52,13 @@ class Dashboard extends Component {
         user_data: data.data
       })
     }).catch(err => console.log(err))
+    axios.get(process.env.REACT_APP_URL+'/clinics')
+    .then(data => {
+      console.log(data.data.data);
+      this.setState({
+        clinic_data: data.data.data
+      })
+    }).catch(error => console.log(error))
   }
 
   render() {
