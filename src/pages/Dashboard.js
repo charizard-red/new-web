@@ -25,11 +25,13 @@ class Dashboard extends Component {
       modalEdit: false,
       clinic_data: [],
       clinic_data_all: [],
-      search_key: ""
+      search_key: "",
+      search_key_city: ""
     };
     this.toggle = this.toggle.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
   }
 
   async handleChange(event) {
@@ -51,15 +53,44 @@ class Dashboard extends Component {
       //5.get all clinic data
       let clinic_data_all = Object.assign(this.state.clinic_data_all);
 
-      //6.get search key
-      let search_key = Object.assign(this.state.search_key);
-
       //7.filter clinic_data and store to clinic_data_filtered var
       let clinic_data_filtered = clinic_data_all.filter(
         clinic =>
           clinic.title
             .toLowerCase()
             .search(this.state.search_key.toLowerCase()) !== -1
+      );
+
+      //8.set filtered clinic_data to state
+      await this.setState({ clinic_data: clinic_data_filtered });
+    }
+  }
+
+  async handleCityChange(event) {
+    //1.get name and value from jsx input tag
+    var name = event.target.name;
+    var value = event.target.value;
+
+    //2.set input from user to state
+    await this.setState({ [name]: value });
+
+    if (this.state.search_key_city === "") {
+      //3.if search key is empty string, then show all clinic data
+      await this.setState({
+        clinic_data: Object.assign(this.state.clinic_data_all)
+      });
+    } else {
+      //4.if search key is not empty string, then show filtered clinic data
+
+      //5.get all clinic data
+      let clinic_data_all = Object.assign(this.state.clinic_data_all);
+
+      //7.filter clinic_data and store to clinic_data_filtered var
+      let clinic_data_filtered = clinic_data_all.filter(
+        clinic =>
+          clinic.city
+            .toLowerCase()
+            .search(this.state.search_key_city.toLowerCase()) !== -1
       );
 
       //8.set filtered clinic_data to state
@@ -146,19 +177,21 @@ class Dashboard extends Component {
                         <FormGroup>
                           <Input
                             type="select"
-                            name="selectMulti"
+                            name="search_key_city"
+                            value={this.state.search_key_city}
+                            onChange={this.handleCityChange}
                             id="exampleSelectMulti"
                           >
-                            <option>SEMUA</option>
-                            <option>DEPOK</option>
-                            <option>BOGOR</option>
-                            <option>BEKASI</option>
-                            <option>TANGERANG</option>
-                            <option>JAKARTA PUSAT</option>
-                            <option>JAKARTA SELATAN</option>
-                            <option>JAKARTA UTARA</option>
-                            <option>JAKARTA TIMUR</option>
-                            <option>JAKARTA BARAT</option>
+                            <option value="">SEMUA</option>
+                            <option value="depok">DEPOK</option>
+                            <option value="bogor">BOGOR</option>
+                            <option value="bekasi">BEKASI</option>
+                            <option value="tanggerang">TANGERANG</option>
+                            <option value="jakarta pusat">JAKARTA PUSAT</option>
+                            <option value="jakarta selatan">JAKARTA SELATAN</option>
+                            <option value="jakarta utara">JAKARTA UTARA</option>
+                            <option value="jakarta timur">JAKARTA TIMUR</option>
+                            <option value="jakarta barat">JAKARTA BARAT</option>
                           </Input>
                         </FormGroup>
                       </Form>
