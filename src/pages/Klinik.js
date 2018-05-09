@@ -10,6 +10,7 @@ import DoctorCard from '../components/cards/DoctorCard';
 import ClinicDetailCard from '../components/cards/ClinicDetailCard';
 import AppointmentModal from '../components/modals/AppointmentModal';
 import AddDoctorModal from '../components/modals/AddDoctorModal';
+import EditClinicModal from '../components/modals/EditClinicModal';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Dashboard extends Component {
     this.state = {
       modal: false,
       doctorModal: false,
+      editModal: false,
       klinik_id: this.props.match.params._id,
       owner: false,
       klinik_data: {
@@ -28,6 +30,7 @@ class Dashboard extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
     this.toggleDoctor = this.toggleDoctor.bind(this);
   }
 
@@ -61,12 +64,22 @@ class Dashboard extends Component {
     });
   }
 
+  toggleEdit() {
+    this.setState({
+      editModal: !this.state.editModal
+    });
+  }
+
   render() {
     return (
       <Container>
         <Row>
           <Col xs="3">
-            <ClinicDetailCard toggle={this.toggleDoctor} data={this.state.klinik_data} owner={this.state.owner}/>
+            <ClinicDetailCard
+              toggle={this.toggleDoctor}
+              toggleEdit={this.toggleEdit}
+              data={this.state.klinik_data}
+              owner={this.state.owner}/>
           </Col>
           <Col xs="9">
             <Jumbotron fluid style={{padding: 15}}>
@@ -96,6 +109,7 @@ class Dashboard extends Component {
           </Col>
         </Row>
         <AddDoctorModal toggle={this.toggleDoctor} modal={this.state.doctorModal}/>
+        <EditClinicModal toggle={this.toggleEdit} modal={this.state.editModal}/>
         <AppointmentModal
           toggle={this.toggle}
           modal={this.state.modal}
