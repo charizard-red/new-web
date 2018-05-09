@@ -19,6 +19,7 @@ class Dashboard extends Component {
       modal: false,
       doctorModal: false,
       editModal: false,
+      doctor_data: {},
       klinik_id: this.props.match.params.id,
       owner: false,
       klinik_data: {
@@ -49,9 +50,10 @@ class Dashboard extends Component {
     }).catch(err => console.log(err))
   }
 
-  toggle() {
+  toggle(data) {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
+      doctor_data: data
     });
   }
 
@@ -108,10 +110,16 @@ class Dashboard extends Component {
           toggle={this.toggleEdit}
           klinik_id={this.state.klinik_id}
           modal={this.state.editModal} />
-        <AppointmentModal
-          toggle={this.toggle}
-          modal={this.state.modal}
-        />
+        {(this.state.doctor_data.time) ? (
+          <AppointmentModal
+            toggle={this.toggle}
+            nama_klinik={this.state.klinik_data.title}
+            doctor_data={this.state.doctor_data}
+            modal={this.state.modal}
+          />
+        ) : (
+          <div/>
+        )}
       </Container>
     )
   }
