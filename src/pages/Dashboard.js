@@ -14,6 +14,8 @@ import UserCard from "../components/cards/UserCard";
 import ClinicCard from "../components/cards/ClinicCard";
 import { Provider } from "../context/UserContext";
 
+import Admin from '../components/Admin';
+
 import CreateClinicModal from "../components/modals/CreateClinicModal";
 import EdituserModal from "../components/modals/EdituserModal";
 
@@ -161,6 +163,12 @@ class Dashboard extends Component {
                   <Col xs="9">
                     <Jumbotron fluid style={{ padding: 15 }}>
                       <h1>Welcome, {this.state.user_data.username}!</h1>
+                      <hr />
+                      {(this.state.user_data.admin==true) ? (
+                        <Admin />
+                      ) : (
+                        <div />
+                      )}
                       <hr />
                       <h3>Find Clinic</h3>
                       <Form inline onSubmit={e => e.preventDefault()}>
