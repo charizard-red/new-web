@@ -6,14 +6,16 @@ const ClinicCard = (props) => {
   return (
     <div>
       <Card style={{ width: '230px', marginTop: 10 }}>
-        <CardImg top width="50%" src={require('../../assets/doctor_icon.png')} alt="Card image cap" />
+        <CardImg top width="50%" src={props.data.photo} alt="Card image cap" />
         <CardBody>
           <CardTitle>{props.data.name}</CardTitle>
           <CardText>
             <b>specialist</b>: {props.data.specialist}<br/>
-            <b>phone</b>: {props.data.phone}<br/>
-            <b>price</b>: {props.data.price}<br/>
-            <b>address</b>: {props.data.address}
+            <b>cost</b>: {props.data.cost}<br/>
+            <b>time</b>: {props.data.time.from} to {props.data.time.from}<br/>
+            <b>days</b>: {props.data.time.days.map(item => (
+              <span>{item}, </span>
+            ))}
           </CardText>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <Button color="success" onClick={props.toggle}>Make Appointment</Button>

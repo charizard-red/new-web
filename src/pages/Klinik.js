@@ -19,7 +19,7 @@ class Dashboard extends Component {
       modal: false,
       doctorModal: false,
       editModal: false,
-      klinik_id: this.props.match.params._id,
+      klinik_id: this.props.match.params.id,
       owner: false,
       klinik_data: {
         name: 'Klinik Sehat',
@@ -91,13 +91,7 @@ class Dashboard extends Component {
                   this.state.klinik_data.doctors.map(data => {
                     return (
                       <Col>
-                        <DoctorCard data={{
-                          specialist: data.specialist,
-                          name: data.name,
-                          phone: data.phone,
-                          price: data.price,
-                          address: data.address
-                        }}
+                        <DoctorCard data={data}
                         toggle={this.toggle}
                       />
                     </Col>
@@ -108,8 +102,15 @@ class Dashboard extends Component {
             </Jumbotron>
           </Col>
         </Row>
-        <AddDoctorModal toggle={this.toggleDoctor} modal={this.state.doctorModal}/>
-        <EditClinicModal toggle={this.toggleEdit} modal={this.state.editModal}/>
+        <AddDoctorModal
+          toggle={this.toggleDoctor}
+          modal={this.state.doctorModal}
+          klinik_id={this.state.klinik_id}
+        />
+        <EditClinicModal
+          toggle={this.toggleEdit}
+          klinik_id={this.state.klinik_id}
+          modal={this.state.editModal} />
         <AppointmentModal
           toggle={this.toggle}
           modal={this.state.modal}
