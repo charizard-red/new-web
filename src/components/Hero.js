@@ -44,7 +44,7 @@ class Hero extends React.Component {
               src={require("../assets/clinic2.jpg")}
             />
             <div>
-              <h1 className="display-3">Welcome to our Web</h1>
+              <h1 className="display-3">Discover clinics and doctors</h1>
               <hr className="my-2" />
               <br />
               <h2>Stay calm and make an appointment</h2>
