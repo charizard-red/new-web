@@ -22,9 +22,6 @@ class Dashboard extends Component {
       klinik_id: this.props.match.params.id,
       owner: false,
       klinik_data: {
-        name: 'Klinik Sehat',
-        phone: '085811348633',
-        address: 'GDC Alamanda A3/3',
         doctors: []
       },
     };
