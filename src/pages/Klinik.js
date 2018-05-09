@@ -4,11 +4,7 @@ import {
   Container,
   Row,
   Col,
-  Form,
-  FormGroup,
-  Input,
-  Jumbotron,
-  Button } from 'reactstrap';
+  Jumbotron } from 'reactstrap';
 
 import DoctorCard from '../components/cards/DoctorCard';
 import ClinicDetailCard from '../components/cards/ClinicDetailCard';
