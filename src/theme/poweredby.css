@@ -1,0 +1,21 @@
+.poweredbyflex{
+  display: flex; justify-content: space-between;
+}
+.poweredbyiconsize{
+  width: 110px; height: 120px;
+}
+.poweredbyiconsizelandscape{
+  width: 250px; height: 120px;
+}
+.fixsizepoweredby{
+  width: 150px; border: 1px solid black;
+}
+.fixsizepoweredbylandscape{
+  width: 250px; border: 1px solid black;
+}
+.poweredbycentral{
+  margin-left: 18px;
+}
+.poweredbylabel{
+  margin-left: 42%;
+}
