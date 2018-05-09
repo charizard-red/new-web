@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 
 class Home extends Component {
   render() {
     return (
-      <Container>
-        <Hero />
-      </Container>
+      <div>
+        <Container>
+          <Hero />
+        </Container>
+        <br/>
+        <Footer />
+      </div>
     )
   }
 }
