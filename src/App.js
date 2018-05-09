@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Header from './components/Header';
+import Footer2 from './components/Footer2';
+
 import Home from './pages/Home';
 import News from './pages/News';
 import Dashboard from './pages/Dashboard'
@@ -21,7 +23,7 @@ class App extends Component {
             <Route path="/klinik/:id" component={Klinik}/>
             <Route component={NotFound}/>
           </Switch>
-
+          <Footer2 />
         </div>
       </Router>
     );
