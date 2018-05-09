@@ -164,7 +164,7 @@ class Dashboard extends Component {
                     <Jumbotron fluid style={{ padding: 15 }}>
                       <h1>Welcome, {this.state.user_data.username}!</h1>
                       <hr />
-                      {(this.state.user_data.admin==true) ? (
+                      {(this.state.user_data.admin===true) ? (
                         <Admin />
                       ) : (
                         <div />
