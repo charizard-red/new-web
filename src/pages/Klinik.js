@@ -77,13 +77,6 @@ class Dashboard extends Component {
               <h1>{this.state.klinik_data.title}</h1>
               <p>{this.state.klinik_data.address}</p>
               <hr />
-              <h3>Find Doctor</h3>
-              <Form inline>
-                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                  <Input type="text" name="find" id="examplePassword" placeholder="Find doctor" />
-                </FormGroup>
-                <Button color="primary">FIND</Button>
-              </Form>
               <Row>
                 {
                   this.state.klinik_data.doctors.map(data => {
