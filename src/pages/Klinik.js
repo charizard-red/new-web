@@ -11,6 +11,7 @@ import ClinicDetailCard from '../components/cards/ClinicDetailCard';
 import AppointmentModal from '../components/modals/AppointmentModal';
 import AddDoctorModal from '../components/modals/AddDoctorModal';
 import EditClinicModal from '../components/modals/EditClinicModal';
+import ClinicAppointmentList from '../components/ClinicAppointmentList';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -84,7 +85,14 @@ class Dashboard extends Component {
             <Jumbotron fluid style={{padding: 15}}>
               <h1>{this.state.klinik_data.title}</h1>
               <p>{this.state.klinik_data.address}</p>
-              <hr />
+              {(this.state.owner===true) ? (
+                <div>
+                  <ClinicAppointmentList/>
+                  <hr/>
+                </div>
+              ) : (
+                <hr />
+              )}
               <Row>
                 {
                   this.state.klinik_data.doctors.map(data => {

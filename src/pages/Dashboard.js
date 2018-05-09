@@ -163,13 +163,14 @@ class Dashboard extends Component {
                   <Col xs="9">
                     <Jumbotron fluid style={{ padding: 15 }}>
                       <h1>Welcome, {this.state.user_data.username}!</h1>
-                      <hr />
                       {(this.state.user_data.admin===true) ? (
-                        <Admin />
+                        <div>
+                          <Admin />
+                          <hr/>
+                        </div>
                       ) : (
-                        <div />
+                        <hr />
                       )}
-                      <hr />
                       <h3>Find Clinic</h3>
                       <Form inline onSubmit={e => e.preventDefault()}>
                         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
