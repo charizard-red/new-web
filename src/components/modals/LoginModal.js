@@ -83,10 +83,6 @@ class LoginModal extends Component {
                 />
               </FormGroup>
             </Form>
-            <br />
-            <Button color="danger" onClick={this.props.toggle} block>
-              Sign In with Google
-            </Button>
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.props.toggle}>
