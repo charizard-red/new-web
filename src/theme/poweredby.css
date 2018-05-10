@@ -1,20 +1,19 @@
+.bgstyle{
+  background: linear-gradient(to bottom, white, #00BFFF);
+  color: #ec4b38; height: 350px;
+}
 .poweredbyflex{
-  display: flex; justify-content: space-between;
+  display: flex; justify-content: space-around; width: 100%;
+}
+.poweredbyflex2{
+  display: flex; justify-content: space-around; width: 100%;
+  margin-top: 30px;
 }
 .poweredbyiconsize{
-  width: 110px; height: 120px;
-}
-.poweredbyiconsizelandscape{
-  width: 250px; height: 120px;
+  width: 80px; height: 90px;
 }
 .fixsizepoweredby{
-  width: 150px; border: 1px solid black;
-}
-.fixsizepoweredbylandscape{
-  width: 250px; border: 1px solid black;
-}
-.poweredbycentral{
-  margin-left: 18px;
+  border: 0px solid black;
 }
 .poweredbylabel{
   margin-left: 42%;
