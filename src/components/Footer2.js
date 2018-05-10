@@ -1,21 +1,21 @@
-import React from 'react';
-import {Component} from 'react';
-import {CardFooter, Navbar} from 'reactstrap';
-import '../theme/footer2.css';
+import React from "react";
+import { Component } from "react";
+import { CardFooter, Navbar } from "reactstrap";
+import "../theme/footer2.css";
 
 class Footer2 extends Component {
-  render(){
-    return(
-      <div>
+  render() {
+    return (
+      <footer className="footer">
         <Navbar color="primary" dark expand="md">
           <div className="flexfooter2 footer2size footer2color">
-            <div>Temu Dokter</div>
-            <div>We are TEAM RED</div>
-            <div>@2018</div>
+            <div />
+            <div>Temu Dokter &copy; 2018 </div>
+            <div />
           </div>
         </Navbar>
-      </div>
-    )
+      </footer>
+    );
   }
 }
 export default Footer2;

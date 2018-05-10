@@ -5,9 +5,10 @@ import "../theme/poweredby.css";
 
 import ReactJsLogo from "../assets/poweredby/reactjs.png";
 import MongooseLogo from "../assets/poweredby/mongoose.jpg";
-import MongooDBLogo from "../assets/poweredby/mongodb.png";
+import MongoDBLogo from "../assets/poweredby/mongodb.png";
 import BootstrapLogo from "../assets/poweredby/bootstrap.png";
-import JsLogo from "../assets/poweredby/js.png";
+import ExpressLogo from "../assets/poweredby/express.png";
+import JavaScriptLogo from "../assets/poweredby/javascript.png";
 
 class PoweredBy extends Component {
   render() {
@@ -15,12 +16,38 @@ class PoweredBy extends Component {
       <div>
         <br />
         <h1 className="poweredbylabel">Powered by</h1>
+
         <div className="poweredbyflex">
           <div className="fixsizepoweredby">
             <a href="#">
               <img
                 className="poweredbyiconsize poweredbycentral"
+                src={JavaScriptLogo}
+              />
+            </a>
+          </div>
+
+          <div className="fixsizepoweredby">
+            <a href="#">
+              <img
+                className="poweredbyiconsize poweredbycentral"
                 src={ReactJsLogo}
+              />
+            </a>
+          </div>
+
+          <div className="fixsizepoweredby">
+            <img
+              className="poweredbyiconsize poweredbycentral"
+              src={BootstrapLogo}
+            />
+          </div>
+
+          <div className="fixsizepoweredby">
+            <a href="#">
+              <img
+                className="poweredbyiconsize poweredbycentral"
+                src={ExpressLogo}
               />
             </a>
           </div>
@@ -41,21 +68,6 @@ class PoweredBy extends Component {
                 src={MongooseLogo}
               />
             </a>
-          </div>
-
-          <div className="fixsizepoweredby">
-            <img
-              className="poweredbyiconsize poweredbycentral"
-              src={BootstrapLogo}
-            />
-          </div>
-
-          <div className="fixsizepoweredby">
-            <img className="poweredbyiconsize poweredbycentral" src={JsLogo} />
-          </div>
-
-          <div className="fixsizepoweredby">
-            <img className="poweredbyiconsize poweredbycentral" src={JsLogo} />
           </div>
         </div>
       </div>
