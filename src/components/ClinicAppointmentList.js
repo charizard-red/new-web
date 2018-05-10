@@ -7,9 +7,6 @@ import {
 } from "reactstrap";
 
 class Dashboard extends Component {
-  constructor() {
-    super()
-  }
   accept(id) {
     axios.put(process.env.REACT_APP_URL+'/orders/'+id).then(data => {
       alert('success')
@@ -34,7 +31,7 @@ class Dashboard extends Component {
           {this.props.data.map((item, index) => (
             <tr>
               <th scope="row">
-                {(item.accept == true) ? (
+                {(item.accept === true) ? (
                   <b>Accepted</b>
                 ) : (
                   <Button color="success" onClick={() => this.accept(item._id)}>

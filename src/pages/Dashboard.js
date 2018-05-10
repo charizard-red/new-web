@@ -140,7 +140,7 @@ class Dashboard extends Component {
       axios.get(process.env.REACT_APP_URL+'/orders')
       .then(data => {
         console.log(data);
-        let new_data = data.data.filter((item) => item.user_id._id == window.localStorage.user_id)
+        let new_data = data.data.filter((item) => item.user_id._id === window.localStorage.user_id)
         this.setState({
           orders: new_data
         })
@@ -176,13 +176,15 @@ class Dashboard extends Component {
                       <h1>Welcome, {this.state.user_data.username}!</h1>
                       {(this.state.user_data.admin===true) ? (
                         <div>
+                          <hr/>
+                          <h3>Unverified Clinics</h3>
                           <Admin />
                           <hr/>
                         </div>
                       ) : (
                         <hr />
                       )}
-                      <h3>Orders</h3>
+                      <h3>Your Appointment</h3>
                       {(this.state.orders) ? (
                         <div>
                           <AppointmentClient data={this.state.orders} />

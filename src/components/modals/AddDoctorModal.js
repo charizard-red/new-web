@@ -132,7 +132,7 @@ class AppointmentModal extends Component {
                     { value: 'Wed', label: 'Wednesday' },
                     { value: 'Thu', label: 'Thursday' },
                     { value: 'Fri', label: 'Friday' },
-                    { value: 'Sat', label: 'Saturdat' },
+                    { value: 'Sat', label: 'Saturday' },
                   ]}
                 />
               </FormGroup>

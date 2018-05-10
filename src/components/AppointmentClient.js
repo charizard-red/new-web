@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import moment from 'moment'
-import axios from "axios";
 import {
-  Table,
-  Button
+  Table
 } from "reactstrap";
 
 class Dashboard extends Component {
-  constructor() {
-    super()
-  }
   getTime(date) {
     return moment(date).fromNow()
   }
@@ -18,7 +13,7 @@ class Dashboard extends Component {
       <Table>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Status</th>
             <th>Clinic</th>
             <th>phone</th>
             <th>Doctor</th>
@@ -29,7 +24,7 @@ class Dashboard extends Component {
           {this.props.data.map((item, index) => (
             <tr>
               <th scope="row">
-                {(item.accept == true) ? (
+                {(item.accept === true) ? (
                   <b>Accepted</b>
                 ) : (
                   <b>Not Accepted</b>
