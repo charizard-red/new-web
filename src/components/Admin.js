@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import {
   Table,
-  Button
+  Button,
+  ButtonGroup
 } from "reactstrap";
 
 class Dashboard extends Component {
@@ -12,6 +13,7 @@ class Dashboard extends Component {
       clinic_data: []
     }
     this.verifyClinic = this.verifyClinic.bind(this)
+    this.deleteClinic = this.deleteClinic.bind(this)
   }
   async componentWillMount() {
     await axios
@@ -27,6 +29,14 @@ class Dashboard extends Component {
 
   verifyClinic(id) {
     axios.post(process.env.REACT_APP_URL + "/clinics/" + id).then(data => {
+      alert('success')
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  deleteClinic(id) {
+    axios.delete(process.env.REACT_APP_URL + "/clinics/" + id).then(data => {
       alert('success')
     }).catch(err => {
       console.log(err)
@@ -53,10 +63,16 @@ class Dashboard extends Component {
               return (
                 <tr>
                   <th scope="row">
-                    <Button
-                      color="success"
-                      onClick={data => this.verifyClinic(item._id)}
-                      >verify</Button>
+                    <ButtonGroup>
+                      <Button
+                        color="success"
+                        onClick={data => this.verifyClinic(item._id)}
+                        >verify</Button>
+                        <Button
+                          color="danger"
+                          onClick={data => this.deleteClinic(item._id)}
+                          >delete</Button>
+                        </ButtonGroup>
                     </th>
                     <td>{item.title}</td>
                     <td>{item.address}</td>
