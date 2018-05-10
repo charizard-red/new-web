@@ -22,37 +22,39 @@ class Footer extends Component {
             <div className="fixsizeprofile">
               <label className="label1">Rahman Fadhil</label>
               <img className="imageteam" src={Fadhilface} alt="Fadhil" />
-              <label className="label3">Leader & Full Stack</label>
+              <label className="label3">
+                Leader<br />& Full Stack Developer
+              </label>
             </div>
 
             <div className="fixsizeprofile">
               <label className="label1">Ali Kurniawan</label>
               <img className="imageteam" src={Aliface} alt="Ali" />
-              <label className="label31">Frontend</label>
+              <label className="label3">Frontend Developer</label>
             </div>
 
             <div className="fixsizeprofile">
               <label className="label11">Herdanu Y</label>
               <img className="imageteam" src={Danuface} alt="Danu" />
-              <label className="label31">Full Stack</label>
+              <label className="label3">Full Stack Developer</label>
             </div>
 
             <div className="fixsizeprofile">
               <label className="label11">Kien Doan</label>
               <img className="imageteam" src={Kiendoanface} alt="Kien" />
-              <label className="label31">Frontend</label>
+              <label className="label3">Frontend Developer</label>
             </div>
 
             <div className="fixsizeprofile">
               <label className="label11">M Najib</label>
               <img className="imageteam" src={Najibface} alt="Najib" />
-              <label className="label31">Frontend</label>
+              <label className="label3">Frontend Developer</label>
             </div>
 
             <div className="fixsizeprofile">
               <label className="label11">Dei Gratia</label>
               <img className="imageteam" src={Deiface} alt="Dei" />
-              <label className="label31">Backend</label>
+              <label className="label3">Backend Developer</label>
             </div>
           </div>
         </CardFooter>

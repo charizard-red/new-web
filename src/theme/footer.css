@@ -7,23 +7,21 @@
   width: 110px;
   height: 120px;
   opacity: 0.9;
-  margin-left: 17px;
   border-radius: 10px;
   object-fit: cover;
 }
 .fixsizeprofile {
   width: 150px;
   border: 0px solid black;
+  text-align: center;
 }
 .label1 {
   font-size: 20px;
   font-weight: bolder;
-  margin-left: 8px;
 }
 .label11 {
   font-size: 20px;
   font-weight: bolder;
-  margin-left: 20px;
 }
 .label2 {
   color: red;
@@ -35,7 +33,7 @@
   color: #158cba;
   font-size: 17px;
   font-weight: bolder;
-  margin-left: 37px;
+  margin-top: 5px;
 }
 .label21 {
   color: red;
