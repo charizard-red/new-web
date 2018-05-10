@@ -17,6 +17,7 @@
     "reactstrap": "^5.0.0"
   },
   "scripts": {
+    "dev": "PORT=8000 react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build && ./production.sh",
     "test": "react-scripts test --env=jsdom",
