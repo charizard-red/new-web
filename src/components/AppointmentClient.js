@@ -17,6 +17,7 @@ class Dashboard extends Component {
             <th>Clinic</th>
             <th>phone</th>
             <th>Doctor</th>
+            <th>Day</th>
             <th>Created At</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@ class Dashboard extends Component {
               <td>{item.clinic_id.title}</td>
               <td>{item.clinic_id.phone}</td>
               <td>{item.doctor_id.name}</td>
+              <td>{item.day}</td>
               <td>{this.getTime(item.time)}</td>
             </tr>
           ))}

@@ -15,7 +15,7 @@ class AppointmentModal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      day: ""
+      day: "select"
     }
     this.handleChange = this.handleChange.bind(this)
     this.addAppointment = this.addAppointment.bind(this)
@@ -27,19 +27,23 @@ class AppointmentModal extends Component {
     })
   }
   addAppointment() {
-    let toggle = this.props.toggle
-    axios.post(process.env.REACT_APP_URL+'/orders', {
-      doctor_id: this.props.doctor_data,
-      clinic_id: this.props.klinik_data,
-      day: this.state.day,
-    }, {
-      headers: {
-        "Authorization": "Bearer " + window.localStorage.token
-      }
-    }).then(data => {
-      console.log(data);
-      toggle()
-    }).catch(err => console.log(err))
+    if(this.state.day === "select") {
+      alert('Please select day')
+    } else {
+      let toggle = this.props.toggle
+      axios.post(process.env.REACT_APP_URL+'/orders', {
+        doctor_id: this.props.doctor_data,
+        clinic_id: this.props.klinik_data,
+        day: this.state.day,
+      }, {
+        headers: {
+          "Authorization": "Bearer " + window.localStorage.token
+        }
+      }).then(data => {
+        console.log(data);
+        toggle()
+      }).catch(err => console.log(err))
+    }
   }
   setDay(data) {
     this.setState({
@@ -60,12 +64,13 @@ class AppointmentModal extends Component {
               <hr/>
               <Form>
                 <FormGroup>
-                  <Label for="select">Day</Label>
                       <Input type="select" name="day" onChange={this.handleChange} value={this.state.day} id="select">
+                        <option value="select">SELECT DAY</option>
                       {(this.props.doctor_data.time) ? (
                         this.props.doctor_data.time.days.map(data => {
-                        return (<option>{data}</option>)
-                      })) : (
+                          return (<option>{data}</option>)
+                        }
+                      )) : (
                         <div/>
                       )}
                     </Input>
