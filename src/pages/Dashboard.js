@@ -15,6 +15,7 @@ import ClinicCard from "../components/cards/ClinicCard";
 import { Provider } from "../context/UserContext";
 
 import Admin from '../components/Admin';
+import AppointmentClient from '../components/AppointmentClient';
 
 import CreateClinicModal from "../components/modals/CreateClinicModal";
 import EdituserModal from "../components/modals/EdituserModal";
@@ -136,6 +137,16 @@ class Dashboard extends Component {
         });
       })
       .catch(error => console.log(error));
+      axios.get(process.env.REACT_APP_URL+'/orders')
+      .then(data => {
+        console.log(data);
+        let new_data = data.data.filter((item) => item.user_id._id == window.localStorage.user_id)
+        this.setState({
+          orders: new_data
+        })
+      }).catch(err => {
+        console.log(err);
+      })
   }
 
   render() {
@@ -170,6 +181,15 @@ class Dashboard extends Component {
                         </div>
                       ) : (
                         <hr />
+                      )}
+                      <h3>Orders</h3>
+                      {(this.state.orders) ? (
+                        <div>
+                          <AppointmentClient data={this.state.orders} />
+                          <hr/>
+                        </div>
+                      ) : (
+                        <hr/>
                       )}
                       <h3>Find Clinic</h3>
                       <Form inline onSubmit={e => e.preventDefault()}>

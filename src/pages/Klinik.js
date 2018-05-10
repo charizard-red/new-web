@@ -20,7 +20,6 @@ class Dashboard extends Component {
       modal: false,
       doctorModal: false,
       editModal: false,
-      doctor_data: {},
       klinik_id: this.props.match.params.id,
       owner: false,
       klinik_data: {
@@ -49,6 +48,15 @@ class Dashboard extends Component {
         })
       }
     }).catch(err => console.log(err))
+    axios.get(process.env.REACT_APP_URL+'/orders/'+this.state.klinik_id)
+    .then(data => {
+      console.log(data);
+      this.setState({
+        orders: data.data.data
+      })
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   toggle(data) {
@@ -85,9 +93,9 @@ class Dashboard extends Component {
             <Jumbotron fluid style={{padding: 15}}>
               <h1>{this.state.klinik_data.title}</h1>
               <p>{this.state.klinik_data.address}</p>
-              {(this.state.owner===true) ? (
+              {(this.state.owner===true && this.state.orders) ? (
                 <div>
-                  <ClinicAppointmentList/>
+                  <ClinicAppointmentList data={this.state.orders}/>
                   <hr/>
                 </div>
               ) : (
@@ -117,11 +125,12 @@ class Dashboard extends Component {
         <EditClinicModal
           toggle={this.toggleEdit}
           klinik_id={this.state.klinik_id}
+          klinik_data={this.state.klinik_data}
           modal={this.state.editModal} />
-        {(this.state.doctor_data.time) ? (
+        {(this.state.doctor_data) ? (
           <AppointmentModal
             toggle={this.toggle}
-            nama_klinik={this.state.klinik_data.title}
+            klinik_data={this.state.klinik_data}
             doctor_data={this.state.doctor_data}
             modal={this.state.modal}
           />

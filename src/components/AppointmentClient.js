@@ -10,11 +10,6 @@ class Dashboard extends Component {
   constructor() {
     super()
   }
-  accept(id) {
-    axios.put(process.env.REACT_APP_URL+'/orders/'+id).then(data => {
-      alert('success')
-    }).catch(err => console.log(err))
-  }
   getTime(date) {
     return moment(date).fromNow()
   }
@@ -24,7 +19,7 @@ class Dashboard extends Component {
         <thead>
           <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Clinic</th>
             <th>phone</th>
             <th>Doctor</th>
             <th>Created At</th>
@@ -37,13 +32,11 @@ class Dashboard extends Component {
                 {(item.accept == true) ? (
                   <b>Accepted</b>
                 ) : (
-                  <Button color="success" onClick={() => this.accept(item._id)}>
-                    Accept
-                  </Button>
+                  <b>Not Accepted</b>
                 )}
               </th>
-              <td>{item.user_id.username}</td>
-              <td>{item.user_id.data.phone}</td>
+              <td>{item.clinic_id.title}</td>
+              <td>{item.clinic_id.phone}</td>
               <td>{item.doctor_id.name}</td>
               <td>{this.getTime(item.time)}</td>
             </tr>

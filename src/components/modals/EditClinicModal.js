@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import {
   Form,
   FormGroup,
@@ -13,21 +14,46 @@ import {
 class AppointmentModal extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      title: "",
+      phone: "",
+      city: "depok",
+      postal_code: ""
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  editClinic() {
+    let toggle = this.props.toggle
+    axios.put(process.env.REACT_APP_URL+'/clinics'+this.props.klinik_id, {
+      title: this.state.title,
+      phone: this.state.phone,
+      address: this.state.address,
+      city: this.state.city,
+      postal_code: this.state.postal_code,
+    }).then(data => {
+      console.log(data);
+      toggle()
+    }).catch(err => console.log(err))
   }
   render(){
     return (
       <div>
         <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
-          <ModalHeader toggle={this.props.toggle}>Make Appointment</ModalHeader>
+          <ModalHeader toggle={this.props.toggle}>Edit Clinic</ModalHeader>
           <ModalBody>
-  
+
              <Form>
               <FormGroup>
                 <Label for="exampleEmail">Title</Label>
                 <Input
                   type="text"
                   name="title"
-                  
+                  value={this.state.title}
                   onChange={this.handleChange}
                   placeholder="Insert name of your clinic" />
               </FormGroup>
@@ -36,7 +62,7 @@ class AppointmentModal extends Component {
                 <Input
                   type="text"
                   name="phone"
-                  
+                  value={this.state.phone}
                   onChange={this.handleChange}
                   placeholder="Phone" />
               </FormGroup>
@@ -45,13 +71,13 @@ class AppointmentModal extends Component {
                 <Input
                   type="textarea"
                   name="address"
-                  
+                  value={this.state.address}
                   onChange={this.handleChange}
                   id="exampleText" />
               </FormGroup>
               <FormGroup>
                 <Label for="select">City</Label>
-                <Input type="select" name="city" onChange={this.handleChange} id="select">
+                <Input type="select" name="city" value={this.state.city} onChange={this.handleChange} id="select">
                   <option value="depok">DEPOK</option>
                   <option value="bogor">BOGOR</option>
                   <option value="bekasi">BEKASI</option>
@@ -68,6 +94,7 @@ class AppointmentModal extends Component {
                 <Input
                   type="text"
                   name="postal_code"
+                  value={this.state.postal_code}
                   onChange={this.handleChange}
                   placeholder="Insert your postal code" />
               </FormGroup>
@@ -75,7 +102,7 @@ class AppointmentModal extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={this.props.toggle}>Cancel</Button>{' '}
-            <Button color="success" onClick={this.props.toggle}>Make Appointment</Button>
+            <Button color="success" onClick={this.props.toggle}>Edit Clinic</Button>
           </ModalFooter>
         </Modal>
       </div>
