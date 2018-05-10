@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import { CardFooter, Navbar } from "reactstrap";
+import { Navbar } from "reactstrap";
 import "../theme/footer2.css";
 
 class Footer2 extends Component {

@@ -19,53 +19,61 @@ class PoweredBy extends Component {
 
         <div className="poweredbyflex">
           <div className="fixsizepoweredby">
-            <a href="#">
+            <a href="https://javascript.com">
               <img
                 className="poweredbyiconsize poweredbycentral"
                 src={JavaScriptLogo}
+                alt="JavaScript"
               />
             </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#">
+            <a href="https://reactjs.org">
               <img
                 className="poweredbyiconsize poweredbycentral"
                 src={ReactJsLogo}
+                alt="React"
               />
             </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <img
-              className="poweredbyiconsize poweredbycentral"
-              src={BootstrapLogo}
-            />
+            <a href="https://getbootstrap.com">
+              <img
+                className="poweredbyiconsize poweredbycentral"
+                src={BootstrapLogo}
+                alt="Bootstrap"
+              />
+            </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#">
+            <a href="https://expressjs.com">
               <img
                 className="poweredbyiconsize poweredbycentral"
                 src={ExpressLogo}
+                alt="Express"
               />
             </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#">
+            <a href="https://mongodb.com">
               <img
                 className="poweredbyiconsize poweredbycentral"
                 src={MongoDBLogo}
+                alt="MongoDB"
               />
             </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#">
+            <a href="http://mongoosejs.com">
               <img
                 className="poweredbyiconsize poweredbycentral"
                 src={MongooseLogo}
+                alt="Mongoose"
               />
             </a>
           </div>
