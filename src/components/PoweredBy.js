@@ -22,45 +22,43 @@ class PoweredBy extends Component{
 
         <div className="poweredbyflex">
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={ReactJsLogo} /> </a>
+            <a href="#" ><img className="poweredbyiconsize" src={ReactJsLogo} alt="reactjs" title="reactjs"/> </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={JsLogo} /> </a>
+            <a href="#" ><img className="poweredbyiconsize" src={JsLogo} alt="javascript" title="javascript"/> </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={BootstrapLogo} /></a>
+            <a href="#" ><img className="poweredbyiconsize" src={BootstrapLogo} alt="bootstrap" title="bootstrap"/></a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize"  src={MongodbLogo} /></a>
+            <a href="#" ><img className="poweredbyiconsize"  src={MongodbLogo} alt="mongodb" title="mongodb"/></a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={MongooseLogo} /></a>
+            <a href="#" ><img className="poweredbyiconsize" src={MongooseLogo} alt="mongoose" title="mongoose"/></a>
           </div>
 
         </div>
 
         <div className="poweredbyflex2">
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={GithubLogo} /> </a>
+            <a href="#" ><img className="poweredbyiconsize" src={GithubLogo} alt="github" title="github"/> </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={NetlifyLogo} /> </a>
+            <a href="#" ><img className="poweredbyiconsize" src={NetlifyLogo} alt="netlify" title="netlify"/> </a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize" src={MlabLogo} /></a>
+            <a href="#" ><img className="poweredbyiconsize" src={MlabLogo} alt="mlab" title="mlab"/></a>
           </div>
 
           <div className="fixsizepoweredby">
-            <a href="#" ><img className="poweredbyiconsize"  src={FilestackLogo} /></a>
+            <a href="#" ><img className="poweredbyiconsize"  src={FilestackLogo} alt="filestack" title="filestack"/></a>
           </div>
-
-
 
         </div>
 
