@@ -22,7 +22,7 @@ const ClinicCard = (props) => {
           </CardText>
           {(props.owner) ? (
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <Button color="success">Edit</Button>
+              <Button color="success" onClick={props.toggleEdit}>Edit</Button>
               <Button color="primary" onClick={props.toggle}>Add Doctor</Button>
             </div>
           ) : (

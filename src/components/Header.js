@@ -83,7 +83,7 @@ class Header extends Component {
                   to="/dashboard"
                   activeClassName="active"
                 >
-                  Profile
+                  Dashboard
                 </NavLink>
               </NavItem>
               {window.localStorage.token ? (

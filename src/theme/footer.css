@@ -1,0 +1,53 @@
+.flexposision {
+  display: flex;
+  justify-content: space-between;
+}
+.imageteam {
+  border: 0px solid black;
+  width: 110px;
+  height: 120px;
+  opacity: 0.9;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.fixsizeprofile {
+  width: 150px;
+  border: 0px solid black;
+  text-align: center;
+}
+.label1 {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.label11 {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.label2 {
+  color: red;
+  font-size: 17px;
+  font-weight: bolder;
+  margin-left: 8px;
+}
+.label3 {
+  color: #158cba;
+  font-size: 17px;
+  font-weight: bolder;
+  margin-top: 5px;
+}
+.label21 {
+  color: red;
+  font-size: 17px;
+  font-weight: bolder;
+  margin-left: 32px;
+}
+.label31 {
+  color: #158cba;
+  font-size: 17px;
+  font-weight: bolder;
+  margin-left: 35px;
+}
+.bigprofilelabel {
+  margin-left: 42%;
+  color: #158cba;
+}

@@ -7,7 +7,7 @@ const ClinicCard = (props) => {
   return (
     <div>
       <Card style={{ width: '230px', marginTop: 10 }}>
-        <CardImg top width="50%" src={props.data.photo} alt="Card image cap" />
+        <CardImg top width="200" style={{ height: 220 }} src={props.data.photo} alt="Card image cap" />
         <CardBody>
           <CardTitle>{props.data.title}</CardTitle>
           <CardText>

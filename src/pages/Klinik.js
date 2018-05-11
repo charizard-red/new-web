@@ -4,16 +4,14 @@ import {
   Container,
   Row,
   Col,
-  Form,
-  FormGroup,
-  Input,
-  Jumbotron,
-  Button } from 'reactstrap';
+  Jumbotron } from 'reactstrap';
 
 import DoctorCard from '../components/cards/DoctorCard';
 import ClinicDetailCard from '../components/cards/ClinicDetailCard';
 import AppointmentModal from '../components/modals/AppointmentModal';
 import AddDoctorModal from '../components/modals/AddDoctorModal';
+import EditClinicModal from '../components/modals/EditClinicModal';
+import ClinicAppointmentList from '../components/ClinicAppointmentList';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -21,17 +19,16 @@ class Dashboard extends Component {
     this.state = {
       modal: false,
       doctorModal: false,
-      klinik_id: this.props.match.params._id,
+      editModal: false,
+      klinik_id: this.props.match.params.id,
       owner: false,
       klinik_data: {
-        name: 'Klinik Sehat',
-        phone: '085811348633',
-        address: 'GDC Alamanda A3/3',
         doctors: []
       },
     };
 
     this.toggle = this.toggle.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
     this.toggleDoctor = this.toggleDoctor.bind(this);
   }
 
@@ -51,11 +48,21 @@ class Dashboard extends Component {
         })
       }
     }).catch(err => console.log(err))
+    axios.get(process.env.REACT_APP_URL+'/orders/'+this.state.klinik_id)
+    .then(data => {
+      console.log(data);
+      this.setState({
+        orders: data.data.data
+      })
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
-  toggle() {
+  toggle(data) {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
+      doctor_data: data
     });
   }
 
@@ -65,37 +72,41 @@ class Dashboard extends Component {
     });
   }
 
+  toggleEdit() {
+    this.setState({
+      editModal: !this.state.editModal
+    });
+  }
+
   render() {
     return (
       <Container>
         <Row>
           <Col xs="3">
-            <ClinicDetailCard toggle={this.toggleDoctor} data={this.state.klinik_data} owner={this.state.owner}/>
+            <ClinicDetailCard
+              toggle={this.toggleDoctor}
+              toggleEdit={this.toggleEdit}
+              data={this.state.klinik_data}
+              owner={this.state.owner}/>
           </Col>
           <Col xs="9">
             <Jumbotron fluid style={{padding: 15}}>
               <h1>{this.state.klinik_data.title}</h1>
               <p>{this.state.klinik_data.address}</p>
-              <hr />
-              <h3>Find Doctor</h3>
-              <Form inline>
-                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                  <Input type="text" name="find" id="examplePassword" placeholder="Find doctor" />
-                </FormGroup>
-                <Button color="primary">FIND</Button>
-              </Form>
+              {(this.state.owner===true && this.state.orders) ? (
+                <div>
+                  <ClinicAppointmentList data={this.state.orders}/>
+                  <hr/>
+                </div>
+              ) : (
+                <hr />
+              )}
               <Row>
                 {
                   this.state.klinik_data.doctors.map(data => {
                     return (
                       <Col>
-                        <DoctorCard data={{
-                          specialist: data.specialist,
-                          name: data.name,
-                          phone: data.phone,
-                          price: data.price,
-                          address: data.address
-                        }}
+                        <DoctorCard data={data}
                         toggle={this.toggle}
                       />
                     </Col>
@@ -106,11 +117,26 @@ class Dashboard extends Component {
             </Jumbotron>
           </Col>
         </Row>
-        <AddDoctorModal toggle={this.toggleDoctor} modal={this.state.doctorModal}/>
-        <AppointmentModal
-          toggle={this.toggle}
-          modal={this.state.modal}
+        <AddDoctorModal
+          toggle={this.toggleDoctor}
+          modal={this.state.doctorModal}
+          klinik_id={this.state.klinik_id}
         />
+        <EditClinicModal
+          toggle={this.toggleEdit}
+          klinik_id={this.state.klinik_id}
+          klinik_data={this.state.klinik_data}
+          modal={this.state.editModal} />
+        {(this.state.doctor_data) ? (
+          <AppointmentModal
+            toggle={this.toggle}
+            klinik_data={this.state.klinik_data}
+            doctor_data={this.state.doctor_data}
+            modal={this.state.modal}
+          />
+        ) : (
+          <div/>
+        )}
       </Container>
     )
   }

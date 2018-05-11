@@ -1,0 +1,17 @@
+.footer {
+  margin-top: 20px;
+}
+.flexfooter2 {
+  display: flex;
+  justify-content: space-between;
+}
+.footer2size {
+  width: 100%;
+}
+.footer2color {
+  color: #f7f7f7;
+  font-weight: bolder;
+}
+.iconsize2{
+  width: 25px; height: 25px;
+}
