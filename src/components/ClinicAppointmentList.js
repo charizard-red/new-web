@@ -22,6 +22,7 @@ class Dashboard extends Component {
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Birth</th>
             <th>phone</th>
             <th>Doctor</th>
             <th>Day</th>
@@ -41,6 +42,7 @@ class Dashboard extends Component {
                 )}
               </th>
               <td>{item.user_id.username}</td>
+              <td>{item.user_id.data.birth}</td>
               <td>{item.user_id.data.phone}</td>
               <td>{item.doctor_id.name}</td>
               <td>{item.day}</td>
