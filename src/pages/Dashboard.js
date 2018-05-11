@@ -56,12 +56,9 @@ class Dashboard extends Component {
       //5.get all clinic data
       let clinic_data_all = Object.assign(this.state.clinic_data_all);
 
-<<<<<<< HEAD
       //6.get search key
       // let search_key = Object.assign(this.state.search_key);
 
-=======
->>>>>>> a45cd9809c38f474c4617d9ccba6c04701b8f0e4
       //7.filter clinic_data and store to clinic_data_filtered var
       let clinic_data_filtered = clinic_data_all.filter(
         clinic =>
