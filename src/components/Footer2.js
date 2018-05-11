@@ -1,7 +1,7 @@
-import React from 'react';
-import {Component} from 'react';
-import {CardFooter, Navbar} from 'reactstrap';
-import '../theme/footer2.css';
+import React from "react";
+import { Component } from "react";
+import { Navbar } from "reactstrap";
+import "../theme/footer2.css";
 
 import GithubWhiteLogo from '../assets/poweredby/githubwhite.png'
 
@@ -22,7 +22,7 @@ class Footer2 extends Component {
           </div>
         </Navbar>
       </div>
-    )
+    );
   }
 }
 export default Footer2;

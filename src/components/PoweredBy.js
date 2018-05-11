@@ -4,7 +4,7 @@ import '../theme/poweredby.css';
 import ReactJsLogo from '../assets/poweredby/reactjs.png';
 import MongooseLogo from '../assets/poweredby/mongoose.png';
 import BootstrapLogo from '../assets/poweredby/bootstrap.png';
-import JsLogo from '../assets/poweredby/js.png';
+import JsLogo from '../assets/poweredby/javascript.png';
 import MongodbLogo from '../assets/poweredby/mongodb.png';
 import GithubLogo from '../assets/poweredby/github.png';
 
@@ -41,6 +41,15 @@ class PoweredBy extends Component{
             <a href="#" ><img className="poweredbyiconsize" src={MongooseLogo} /></a>
           </div>
 
+          <div className="fixsizepoweredby">
+            <a href="http://mongoosejs.com">
+              <img
+                className="poweredbyiconsize poweredbycentral"
+                src={MongooseLogo}
+                alt="Mongoose"
+              />
+            </a>
+          </div>
         </div>
 
         <div className="poweredbyflex2">
@@ -65,8 +74,7 @@ class PoweredBy extends Component{
         </div>
 
       </div>
-
-    )
+    );
   }
 }
 export default PoweredBy;

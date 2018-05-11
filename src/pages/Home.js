@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import Hero from '../components/Hero';
-import Footer from '../components/Footer';
-import Footer2 from '../components/Footer2';
-import PoweredBy from '../components/PoweredBy';
+import React, { Component } from "react";
+import { Container } from "reactstrap";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+import PoweredBy from "../components/PoweredBy";
 
 class Home extends Component {
   render() {
@@ -12,11 +11,11 @@ class Home extends Component {
         <Container>
           <Hero />
         </Container>
-        <br/>
+        <br />
         <Footer />
         <PoweredBy />
       </div>
-    )
+    );
   }
 }
 
