@@ -41,15 +41,6 @@ class PoweredBy extends Component{
             <a href="#" ><img className="poweredbyiconsize" src={MongooseLogo} /></a>
           </div>
 
-          <div className="fixsizepoweredby">
-            <a href="http://mongoosejs.com">
-              <img
-                className="poweredbyiconsize poweredbycentral"
-                src={MongooseLogo}
-                alt="Mongoose"
-              />
-            </a>
-          </div>
         </div>
 
         <div className="poweredbyflex2">
