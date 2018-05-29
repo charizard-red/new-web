@@ -30,7 +30,7 @@ class Footer extends Component {
             <div className="fixsizeprofile">
               <label className="label1">Ali Kurniawan</label>
               <img className="imageteam" src={Aliface} alt="Ali" />
-              <label className="label3">Frontend Developer</label>
+              <label className="label3">Full Stack Developer</label>
             </div>
 
             <div className="fixsizeprofile">
