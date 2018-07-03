@@ -19,8 +19,11 @@ p {
   .bgstyle {
     height: 250px;
   }
-  img.poweredbyiconsize{
+  img.poweredbyiconsize {
     height: 50px;
     width: 50px;
+  }
+  .poweredbyflex {
+    margin-top: 50px;
   }
 }
