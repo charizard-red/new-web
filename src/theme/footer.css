@@ -48,6 +48,7 @@
   margin-left: 35px;
 }
 .bigprofilelabel {
-  margin-left: 42%;
+  display: flex;
+  justify-content: center;
   color: #158cba;
 }

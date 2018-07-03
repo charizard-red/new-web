@@ -1,3 +1,26 @@
 p {
   font-size: 1.2em;
 }
+
+@media only screen and (max-width: 320px) {
+  .flexposision {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mr-3, .mx-3 {
+    width: 240px;
+    height: 160px;
+  }
+  .d-flex {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .bgstyle {
+    height: 250px;
+  }
+  img.poweredbyiconsize{
+    height: 50px;
+    width: 50px;
+  }
+}
